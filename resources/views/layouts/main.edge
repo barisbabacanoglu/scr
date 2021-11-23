@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  @entryPointStyles('app')
+  @entryPointScripts('app')
+</head>
+<body>
+<!--https://dribbble.com/shots/16813203-Invoice-Creator-Dashboard-Design/attachments/11868795?mode=media-->
+<!--https://dribbble.com/shots/15927590-Pocker-Online-Poker-Game-Interface-Design-->
+<div class="top-menu">
+  <div class="tm-links">
+    <a href="{{ route('home') }}">
+      <img src='https://34slpa7u66f159hfp1fhl9aur1-wpengine.netdna-ssl.com/wp-content/uploads/2020/11/logo_scruminc-w-tagline.png' height='30' alt=''>
+    </a>
+    <a href="{{ route('home') }}">Home</a>
+    <a href="{{ route('scrum/poker') }}">Scrum</a>
+    <a href="#">Backlog</a>
+    <a href="{{ route('users/list') }}">Users</a>
+    <a href="{{ route('auth/login_form') }}">Auth</a>
+    <a href="{{ route('auth/logout') }}">Logout</a>
+  </div>
+</div>
+
+<div class='tv'>
+  @!section('body')
+</div>
+<script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+<script>
+  const socket = io()
+  socket.on('news', (data) => {
+    console.log(data)
+    socket.emit('my other event', { my: 'data' })
+  })
+
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+
+  socket.on('login', (data) => {
+    alert('login', data)
+  })
+</script>
+
+</body>
+</html>

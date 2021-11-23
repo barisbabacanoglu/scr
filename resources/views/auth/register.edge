@@ -1,0 +1,29 @@
+@layout('layouts/non_auth')
+@set('title', 'Home page')
+
+@section('body')
+<div class='login centered-box'>
+  <h5>Login</h5>
+  <br>
+  <form method='POST' action="{{ route('auth/register') }}" class='form'>
+    <div class='l-row'>
+      <input type='text' placeholder='Company Name' name='company_name' required class='form-control'>
+    </div>
+    <div class='l-row'>
+      <input type='text' placeholder='Name' name='name' required class='form-control'>
+    </div>
+    <div class='l-row'>
+      <input type='text' placeholder='Username' name='username' required class='form-control'>
+    </div>
+    <div class='l-row'>
+      <input type='email' placeholder='Email' name="email" required class='form-control'>
+    </div>
+    <div class='l-row'>
+      <input type='password' placeholder='Password' name="password" required class='form-control'>
+    </div>
+    <div class='l-row text-center'>
+      <button type='submit' class='btn btn-default'>Register</button> or  <a href="{{ route('auth/login') }}" class='btn btn-default'>Login</a>
+    </div>
+  </form>
+</div>
+@end

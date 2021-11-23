@@ -1,0 +1,68 @@
+@layout('lui/layout')
+@set('title', 'Users')
+
+@section('body')
+<section class="">
+
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col'>
+          <div class='page-header'>
+            <div class='row'>
+              <div class='col-6'>
+                <h4>Users</h4>
+              </div>
+              <div class='col-6 text-right'>
+                <button class='btn btn-page-function'>Create New User</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-8'>
+          <table class="lui-table">
+            <thead>
+            <tr>
+              <th colspan='2'>Name</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Role</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="user-image">
+                <span>
+                  <img src='https://cdn4.iconfinder.com/data/icons/occupation-and-people-avatar-vol-2-1/128/man_avatar_user_old_people_senior_elderly-512.png' alt=''>
+                </span>
+              </td>
+              <td>Barış Babacanoğlu</td>
+              <td>barisbabacanoglu</td>
+              <td>baris@iceberg-digital.co.uk</td>
+              <td>Scrum Master</td>
+            </tr>
+            <tr>
+              <td class="user-image">
+                <span>
+                  <img src='https://cdn4.iconfinder.com/data/icons/occupation-and-people-avatar-vol-2-1/128/man_avatar_freelancer_career_people_male_hipster-512.png' alt=''>
+                </span>
+              </td>
+              <td>Arda Doğan</td>
+              <td>ardadogan</td>
+              <td>arda@iceberg-digital.co.uk</td>
+              <td>Team Member</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class='col-4'>
+          <div class='page-form'>
+            Create a New User
+          </div>
+        </div>
+      </div>
+    </div>
+
+</section>
+@end

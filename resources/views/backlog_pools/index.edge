@@ -1,0 +1,74 @@
+@layout('layouts/main')
+@set('title', 'Users')
+
+@section('body')
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.min.js"></script>
+<!-- CDNJS :: Sortable (https://cdnjs.com/) -->
+<script src="//cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script>
+<!-- CDNJS :: Vue.Draggable (https://cdnjs.com/) -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.20.0/vuedraggable.umd.min.js"></script>
+
+
+<section id="sort-app">
+  @{{message}}
+  <draggable v-if='myList' v-model="myList" group="people" @start="drag=true" @end="drag=false">
+    <div v-for="element in myList" :key="element.backlog_pool_id">@{{element.name}}</div>
+  </draggable>
+
+  <pre v-if='liste'>@{{liste}}</pre>
+  <pre v-if='myListe'>@{{myListe}}</pre>
+
+  <button @click="getlist">tikla gelsin</button>
+
+</section>
+
+
+
+
+<script>
+  var app = new Vue({
+    el: '#sort-app',
+    computed: {
+      liste: {
+        get() {
+          return fetch('http://127.0.0.1:3333/backlog_pools/get_list')
+        }
+      },
+      myList: {
+        get() {
+          return fetch('http://127.0.0.1:3333/backlog_pools/get_list')
+        },
+        set(value) {
+          console.log(value)
+        }
+      }
+    },
+    created() {
+      // this.myListe = fetch('http://127.0.0.1:3333/backlog_pools/get_list')
+    },
+    methods: {
+      getlist: async function() {
+        return this.myListe = await fetch('http://127.0.0.1:3333/backlog_pools/get_list')
+      }
+    },
+    data: {
+      message: 'Hello Vue!',
+      myListe: [
+        'ea','eia'
+      ],
+      myArray: [
+        {
+          id: 1,
+          name: 'name 1'
+        },
+        {
+          id: 2,
+          name: 'name 2'
+        }
+      ]
+    }
+  })
+</script>
+
+@end

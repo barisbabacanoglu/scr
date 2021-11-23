@@ -1,0 +1,55 @@
+@layout('lui/layout')
+@set('title', 'Users')
+
+@section('body')
+<section class="">
+
+  <div class='container-fluid'>
+    <div class='row'>
+      <div class='col'>
+        <div class='page-header'>
+          <div class='row'>
+            <div class='col-6'>
+              <h4>Books</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-8'>
+        <table class="lui-table">
+          <thead>
+          <tr>
+            <th colspan='2'>Name</th>
+            <th>Author</th>
+            <th colspan='2'>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          @each(book in books)
+          <tr>
+            <td class="user-image">
+                <span>
+                  <img src='https://cdn4.iconfinder.com/data/icons/christmas-hand-drawn-icons-color/64/book-512.png' alt=''>
+                </span>
+            </td>
+            <td>{{ book.name }}</td>
+            <td>{{ book.author }}</td>
+            <td><a href="books/{{book.book_id}}/notes">Notes</a></td>
+            <td><a href="books/{{book.book_id}}/notes">Tags</a></td>
+          </tr>
+          @end
+          </tbody>
+        </table>
+      </div>
+      <div class='col-4'>
+        <div class='page-form'>
+          Create a New User
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+@end

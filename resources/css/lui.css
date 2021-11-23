@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Ubuntu:wght@300;400;500&display=swap');
+
+#root {
+  --color1: #202121;
+  --color2: #304066;
+  --color3: #3067e2;
+
+  --color4: #f9fafe;
+  --color5: #f3f6fc;
+  --color6: #e6effc;
+
+  --color7: #d1d2d8;
+  --color8: #002e9b;
+  --color9: #002374;
+  --color10: #5484f1;
+}
+
+html, body {
+  background-color: #f9fafe;
+  font-family: 'Poppins', sans-serif;
+  color: #304066;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+.left-side {
+  width: 50px;
+  height: 100vh;
+  background-color: #EDEFF5FF;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+}
+.left-side a {
+  display: block;
+  margin: 20px 0;
+  position: relative;
+  opacity: 0.75;
+}
+.left-side a img {
+  width: 25px;
+}
+.left-side a span {
+  position: absolute;
+  background-color: #202121;
+  color: #EDEFF5FF;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  left: 40px;
+  display: none;
+}
+.left-side a:hover span {
+  display: inline-block;
+}
+.left-side a:hover {
+  opacity: 1;
+}
+
+.ls-menu { }
+
+.ls-footer {
+  position: absolute;
+  bottom: 0;
+  width: 30px;
+}
+
+.main {
+  background-color: #fff;
+  min-height: 200px;
+  margin-left: 50px;
+  padding-bottom: 20px;
+}
+
+.lui-table {
+  width: 100%;
+}
+.lui-table tbody tr {
+  border-bottom: 1px solid #eee;
+}
+.lui-table tbody tr:hover {
+  background-color: #eee;
+}
+.lui-table tbody tr td {
+  padding: 10px;
+}
+.lui-table thead tr {
+  border-bottom: 1px solid #eee;
+}
+.lui-table thead tr th {
+  padding: 10px;
+}
+
+.lui-table .user-image {
+  width: 70px;
+}
+
+.lui-table .user-image span {
+  display: block;
+  width: 100%;
+  border-radius: 100%;
+  background-color: #fafafa;
+  padding: 2px;
+}
+.lui-table .user-image img {
+  width: 100%;
+}
+
+.page-header {
+  padding: 20px 0;
+}
+
+.btn-page-function {
+  background-color: #3073f7;
+  color: #fff;
+}
+
+.page-form {
+  background-color: #f9fafe;
+  border-radius: 10px;
+  min-height: 400px;
+}
+
+.take-note { }
+
+.take-note .paper {
+  width: 100%;
+  min-height: 300px;
+  padding: 20px;
+  background: url(https://st2.depositphotos.com/3769671/7957/v/600/depositphotos_79574646-stock-illustration-paper-texture-template.jpg);
+  background-size: 20%;
+}
+.take-note .paper:focus {
+  outline: none;
+}
+.take-note input {
+  border: 2px solid #eee;
+  padding: 10px;
+}
+.take-note input:focus {
+  outline: none;
+}
+
+.indexes {
+
+}
+.indexes ul {
+  list-style-type: none;
+  padding: 0;
+}
+.indexes ul li {
+  padding: 5px;
+  display: inline-block;
+}
+.indexes ul li div {
+  background: #f5f5f5;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 3px;
+}
+.indexes ul li input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 250px;
+}
+.indexes ul li strong:hover {
+  cursor: pointer;
+}
+
+.all-notes { }
+.all-notes ul {
+  padding: 0;
+}
+.all-notes ul li {
+  border-left: 3px solid #1a489a;
+  padding-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
+}
+
+.note-view-tabs {
+  background: #E3E5E8;
+  margin-bottom: 10px;
+}
+.note-view-tabs a {
+  padding: 10px 20px;
+  display: inline-block;
+  border-top-right-radius: 20px;
+}
+.note-view-tabs a.active {
+  background: #F2F3F5;
+}
+
+.all-notes-paper {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 20px;
+  color: #645e51;
+  min-height: 300px;
+  padding: 20px;
+  background: url(https://st2.depositphotos.com/3769671/7957/v/600/depositphotos_79574646-stock-illustration-paper-texture-template.jpg);
+  background-size: 20%;
+}
+
+.anp-line {
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+.anp-line p { }
+.anp-line span {
+  text-align: right;
+  display: block;
+}

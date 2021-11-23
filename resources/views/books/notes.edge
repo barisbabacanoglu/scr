@@ -1,0 +1,153 @@
+@layout('lui/layout')
+@set('title', 'Notes')
+
+@section('body')
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<section class="" id="app">
+
+
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col'>
+          <div class='page-header'>
+            <div class='row'>
+              <div class='col-6'>
+                <h4>Books > {{ book.name }} <small>({{ book.author}})</small></h4>
+              </div>
+              <div class='col-6 text-right'>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col'>
+          <div class='note-view-tabs'>
+            <a href="/books/{{book.book_id}}/notes/all">All</a>
+            <a href="/books/{{book.book_id}}/notes/notes" class='active'>Notes</a>
+            <a href="/books/{{book.book_id}}/notes/tags">Tags</a>
+          </div>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-4'>
+          <div class='all-notes'>
+            <ul>
+              @each(note in book.notes)
+              <li>{{ note.note }}-</li>
+              @end
+            </ul>
+          </div>
+        </div>
+        <div class='col-8'>
+          <div class='take-note'>
+            <div contenteditable='true' id="" cols="30" rows="10" @input='noteInput' class='paper' @mouseup="getSelectedText()"></div>
+            <div id='result'></div>
+            <div class='indexes'>
+              <ul>
+                <li v-for='(i, key) in indexes' :key="key">
+                  <div><input type='text' v-model='indexes[key]'> <strong @click="deleteIndex(key)">X</strong></div>
+                </li>
+                <li>
+                  <div><input type='text' v-model='newIndex' v-on:keyup.enter="addNewIndex" @focusout='addNewIndex' placeholder='Add tag'></div>
+                </li>
+              </ul>
+            </div>
+            <button class='btn btn-primary' @click='createNewNote'>Add New Note</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</section>
+
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        newIndex: null,
+        message: 'Hello Vue!',
+        indexes: [
+        ],
+        note: 'null'
+      },
+      methods: {
+        createNewNote: async function() {
+          const body = {
+            note: this.note,
+            indexes: this.indexes,
+          };
+          const rawResponse = await fetch('/books/1/notes', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+          });
+        },
+        noteInput: function(e) {
+          this.note = e.target.innerText
+        },
+        getSelectedText: function(){
+
+          var selectedText = '';
+
+          // window.getSelection
+          if (window.getSelection) {
+            selectedText = window.getSelection();
+          }
+          // document.getSelection
+          else if (document.getSelection) {
+            selectedText = document.getSelection();
+          }
+          // document.selection
+          else if (document.selection) {
+            selectedText =
+              document.selection.createRange().text;
+          } else return;
+          // To write the selected text into the textarea
+          if (selectedText.toString().length >= 2) {
+            if (this.indexes.indexOf(selectedText.toString()) < 0) {
+              this.indexes.push(selectedText.toString())
+            }
+          }
+          // document.getElementById('result').innerText = selectedText
+        },
+        deleteIndex: function(i) {
+          this.indexes.splice(i,1)
+        },
+        addNewIndex: function() {
+          this.indexes.push(this.newIndex)
+          this.newIndex = null;
+        }
+      }
+    })
+    // Function to get the Selected Text
+    function getSelectedText1() {
+      var selectedText = '';
+
+      // window.getSelection
+      if (window.getSelection) {
+        selectedText = window.getSelection();
+      }
+      // document.getSelection
+      else if (document.getSelection) {
+        selectedText = document.getSelection();
+      }
+      // document.selection
+      else if (document.selection) {
+        selectedText =
+          document.selection.createRange().text;
+      } else return;
+      // To write the selected text into the textarea
+      document.getElementById('result').innerText = selectedText
+    }
+
+
+  </script>
+
+
+@end

@@ -1,0 +1,50 @@
+@layout('lui/layout')
+@set('title', 'Notes')
+
+@section('body')
+<script src='https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js'></script>
+<section class='' id='app'>
+
+
+  <div class='container-fluid'>
+    <div class='row'>
+      <div class='col'>
+        <div class='page-header'>
+          <div class='row'>
+            <div class='col-6'>
+              <h4>Books > {{ book.name }} <small>({{ book.author }})</small></h4>
+            </div>
+            <div class='col-6 text-right'>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col'>
+        <div class='note-view-tabs'>
+          <a href='/books/{{book.book_id}}/notes/all' class='active'>All</a>
+          <a href='/books/{{book.book_id}}/notes/notes'>Notes</a>
+          <a href='/books/{{book.book_id}}/notes/tags'>Tags</a>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-12'>
+        <div class='all-notes-paper'>
+          @each(note in book.notes)
+          <div class='anp-line'>
+          <p>{{ note.note }}</p>
+          <span>{{ note.createdAt }}</span>
+          </div>
+          @end
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+@end
